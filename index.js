@@ -1,12 +1,24 @@
 
 const express = require('express');
-require('./services/passport');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const cookieSession = require('cookie-session')
+const passport = require('passport');
+const { mongoURI } = require('./config/keys');
 const keys = require('./config/keys');
+require('./models/User');
+require('./services/passport');
+
+mongoose.connect(keys.mongoURI);
 
 const app = express();
-// mongoose.connect(keys.mongoURI);
 
+app.use(cookieSession({
+  maxAge: 30 * 24 *60 * 60 *1000,
+  keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 // instead of 
@@ -31,3 +43,7 @@ console.log('server is running')
 //model instances: are javascript objects that representing a single record in the collection
 //model class related to one collection and instances each represents one record(inside the collection)
 //password: BLQqVexFxwqY9W0h
+
+
+// client id : 722664295670-542067qhsrfhoc3fvjlrgrp6g3h8a0jg.apps.googleusercontent.com
+// client secret : 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

@@ -4,7 +4,7 @@ module.exports = app => {
   app.get(
     '/auth/google',
     passport.authenticate('google', {
-        scope: ['profile', 'email']
+        scope: ['profile', 'email']      
     })
   );
   
@@ -12,10 +12,12 @@ module.exports = app => {
 
   app.get('/api/logout', (req, res) => {
     req.logout();
-    res.redirect('/');
+    res.send(req.user);
+    //res.redirect('/');
   });
 
   app.get('/api/current_user', (req, res) => {
-    res.send(req.user);
+    res.send(req.session);
+    //res.send(req.user);
   });
 };
