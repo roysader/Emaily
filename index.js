@@ -1,9 +1,8 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session')
 const passport = require('passport');
-const { mongoURI } = require('./config/keys');
+//const { mongoURI } = require('./config/keys');
 const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
@@ -17,6 +16,7 @@ app.use(cookieSession({
   keys: [keys.cookieKey]
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -45,5 +45,39 @@ console.log('server is running')
 //password: BLQqVexFxwqY9W0h
 
 
-// client id : 722664295670-542067qhsrfhoc3fvjlrgrp6g3h8a0jg.apps.googleusercontent.com
-// client secret : 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
+//Emaily-dev Google
+//Client ID: 492326008713-tbheu63m74i1gehrvumu2a672k0bhd7b.apps.googleusercontent.com
+//Client Secret: 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
+
+// Emaily OAuth Client Created Google
+// credentials
+// client Id: 533401416586-pla9lj34d6lsdqgrngc3lsk99k0bneoa.apps.googleusercontent.com
+// client secret: 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
+
+//stephan's emaily id: emaily-171321
+
+
+//first
+
+////https://accounts.google.com/o/oauth2/v2/auth?response_type=code&
+//redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fauth%2Fgoogle%2Fcallback&
+//scope=profile+email&client_id=237014995102-skoamni8m60sm9k4akgbshkud5b7q6p8.apps.googleusercontent.com&flowName=GeneralOAuthFlow
+
+//second
+
+//http://localhost:5000/auth/google/callback?code=
+//4%2F0AX4XfWiLbNog5dPQjpZak9xe2S_-gKoashD2tG3_VYRs7zSEKPpllj2WrCckBKN2odyZlw&
+//scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent
+
+//MongoDB
+//username: roy           //stephan's username: p00gz
+//psw: MvLjtwv9yngnQzpU   //psw: rbBY3TQRxRGaFHc
+//connection string: mongodb+srv://roy:MvLjtwv9yngnQzpU@emaily.whfuo.mongodb.net/test
+//project ID: 62288ce217b23174b35e6f32
+
+//Mongodb
+//emaily-dev
+//username: roy 
+//psw: BnHmtCJSHrUxsiO1
+//mongodb+srv://roy:BnHmtCJSHrUxsiO1@emaily-dev.x4goz.mongodb.net/emaily-dev?retryWrites=true&w=majority
+//project ID: 622b5299e3ab1d747c088f79

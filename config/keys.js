@@ -1,8 +1,11 @@
-module.exports = {
-    googleClientID: '237014995102-skoamni8m60sm9k4akgbshkud5b7q6p8.apps.googleusercontent.com',
-    googleClientSecret: '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',
-    mongoURI: 'mongodb+srv://roy:BLQqVexFxwqY9W0h@emaily.whfuo.mongodb.net/test',
-    //mongoURI: 'mongodb+srv://Stephan:stephan123@emaily-dev.x4goz.mongodb.net/test'
-    cookieKey: 'oiasjdaoisdh'
-};
-//https://data.mongodb-api.com/app/data-aheni/endpoint/data/beta
+// keys.js - figure out what set of credentials to return 
+
+if (process.env.NODE_ENV === 'production') {
+
+    module.exports = require('./prod');
+
+    //we are in production - reutrn the prod set of keys
+} else {
+    //we are in development - return the dev keys!!
+    module.exports = require('./dev');
+}

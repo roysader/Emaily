@@ -2,7 +2,6 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
-const { userInfo } = require('os');
 const User = mongoose.model('users');
 
 passport.serializeUser((user, done) => {
@@ -27,16 +26,20 @@ passport.use
       proxy: true
     }, 
 
-    (accessToken, refreshToken, profile, done) => 
+    (accessToken, refreshToken, profile, done) => //user has already been granted permission, goes to the server instead of passing to google.
     {
-      User.findOne({googleId: profile.id}) //will initiate the query
-          .then((existingUser)=> 
+      /*console.log("ACCESS TOKEN", accessToken);
+      console.log("REFRESH TOKEN", refreshToken);
+      console.log("PROFILE", profile);*/
+
+      User.findOne({googleId: profile.id}) //will initiate the query //find one returns a promise, since async
+          .then(existingUser=> 
       {
           if(existingUser){
             //we alreayd have a record with the given profile ID
             done(null, existingUser);
           } else {
-            //we dont have  a user record with this id, make a new record
+            //if we dont have  a user record with this id, make a new record
             new User({ googleId: profile.id}).save()
             .then(user => done(null, user));
       
