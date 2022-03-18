@@ -39,27 +39,15 @@ passport.use
             //we alreayd have a record with the given profile ID
             done(null, existingUser);
           } else {
-            //if we dont have  a user record with this id, make a new record
-            new User({
-               googleId: profile.id,
-                sub: profile.sub,
-                // name: profile.name,
-                given_name: profile.given_name,
-                family_name: profile.family_name,
-                picture: profile.family_name,
-                email: profile.email,
-                email_verified: profile.email_verified,
-                locale: profile.locale,
-              }).save()
-            .then(user => {
-              console.log('user after save to db ', user);
-              done(null, user)
-            });
-      
-            //call back function(2nd argument)
-            //take identifying user info and save it to dabatabase, if we want t o.
-            }
-      });
-    } 
-  )
-); 
+            // we don't have a user record with this ID, make a new record!
+            new User({ googleId: profile.id })
+              .save()
+              .then((user) => done(null, user));
+
+              //call back function(2nd argument)
+              //take identifying user info and save it to dabatabase, if we want t o.
+          }
+        });
+      }
+    )
+  ); 
