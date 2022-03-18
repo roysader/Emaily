@@ -35,7 +35,7 @@ passport.use
       User.findOne({googleId: profile.id}) //will initiate the query //find one returns a promise, since async
           .then(existingUser=> 
       {
-          if(!existingUser){
+          if(existingUser){
             //we alreayd have a record with the given profile ID
             done(null, existingUser);
           } else {
