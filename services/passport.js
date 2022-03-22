@@ -4,14 +4,14 @@ const mongoose = require('mongoose');
 const keys = require('../config/keys');
 const User = mongoose.model('users');
 
-passport.serializeUser((user, done) => {  //take a user model and generate a token that will be stuffed in the cookie
+passport.serializeUser((user, done) => {//encodes userId inside Cookies  //take a user model and generate a token that will be stuffed in the cookie
   done(null, user.id); //user.id is from mongodb and not the profile ID.
   //after user signs in we only care of internal ID from mongodb.
   //DONE is a callback
   
 });
 
-passport.deserializeUser((id,done)=>{  //take the token pass it into deserialized user and turn it back into User Model
+passport.deserializeUser((id,done)=>{ //encodes userId inside Cookies  //take the token pass it into deserialized user and turn it back into User Model
   User.findById(id).then(user => {
     done(null, user);
   });
