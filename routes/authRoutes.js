@@ -10,15 +10,16 @@ module.exports = app => {
   
   app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => res.redirect('/surveys'));
 
-  app.get('/api/logout', (req, res) => {
-    req.logout();
-    res.send(req.user);
+  app.get('/api/logout', (req, res) => { //Route Handler
+
+    req.logout(); //logs out by removing the id from the cookies
+    res.send(req.user); //prove to user that theyre not signed
     // res.redirect('/');
   });
 
-  app.get('/api/current_user', (req, res) => {
-    res.send(req.user);
-     //res.send(req.user);
+  app.get('/api/current_user', (req, res) => { //Route Handler
+    //res.send(req.user);
+     res.send(req.session);
   });
 };
 
