@@ -6,8 +6,6 @@ const Dashboard =  <h2>Dashboard</h2>;
 const SurveyNew = <h2> The href attribute is required for an anchor to be keyboard accessible.  The href attribute is required for an anchor to be keyboard accessible.  The href attribute is required for an anchor to be keyboard accessible. </h2>;
 const Landing = <h2>Landing</h2>;
 
-// const rootElement = document.getElementById("root");
-
 const App = () => {
   return (
     <div className="container">
