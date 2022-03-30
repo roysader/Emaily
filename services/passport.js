@@ -28,28 +28,22 @@ passport.use
       proxy: true
     }, 
 
-    (accessToken, refreshToken, profile, done) => //user has already been granted permission, goes to the server instead of passing to google.//callback function
+    async (accessToken, refreshToken, profile, done) => //user has already been granted permission, goes to the server instead of passing to google.//callback function
     {
-      /*console.log("ACCESS TOKEN", accessToken);
-      console.log("REFRESH TOKEN", refreshToken);
-      console.log("PROFILE", profile);*/
-      console.log("PROFILE", profile)
-      User.findOne({googleId: profile.id}) //will initiate the query //find one returns a promise, since async
-          .then(existingUser=> 
+     const existingUser = await User.findOne({googleId: profile.id}) //will initiate the query //find one returns a promise, since async
       {
           if(existingUser){
             //we alreayd have a record with the given profile ID
-            done(null, existingUser);//userModel
-          } else {
+            return done(null, existingUser);//userModel
+          } 
             // we don't have a user record with this ID, make a new record!
-            new User({ googleId: profile.id })
-              .save()
-              .then((user) => done(null, user))//database;
+            const user = await new User({ googleId: profile.id }).save();
+              done(null, user);//database;
 
               //call back function(2nd argument)
               //take identifying user info and save it to dabatabase, if we want t o.
-          }
-        });
+          
+        }
       }
     )
   ); 
