@@ -35,12 +35,12 @@ if (process.env.NODE_ENV === 'production'){  //if any git request comes in for s
   //express will first check to see if there is a specific file its looking for, if there is...
   app.use(express.static('client/build'));
 
-app.get('/', (req, res) => {
-  res
-    .status(200)
-    .send('Hello server is running')
-    .end();
-});
+// app.get('/', (req, res) => {
+//   res
+//     .status(200)
+//     .send('Hello server is running')
+//     .end();
+// });
 
   //if there is not...and give them back the html file.
   const path= require('path');
