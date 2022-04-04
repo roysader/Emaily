@@ -30,10 +30,10 @@ passport.use
 
     async (accessToken, refreshToken, profile, done) => //user has already been granted permission, goes to the server instead of passing to google.//callback function
     {
-     const existingUser = await User.findOne({googleId: profile.id}) //will initiate the query //find one returns a promise, since async
+     const existingUser = await User.findOne({googleId: profile.id}) //will initiate the query //findOne returns a promise, since async
       {
           if(existingUser){
-            //we alreayd have a record with the given profile ID
+            //we already have a record with the given profile ID
             return done(null, existingUser);//userModel
           } 
             // we don't have a user record with this ID, make a new record!
@@ -41,7 +41,7 @@ passport.use
               done(null, user);//database;
 
               //call back function(2nd argument)
-              //take identifying user info and save it to dabatabase, if we want t o.
+              //take identifying user info and save it to dabatabase, if we want to
           
         }
       }

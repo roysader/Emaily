@@ -6,16 +6,11 @@ const {Schema} = mongoose; //same as above
 
 const userSchema = new Schema({
   googleId: String,
-  sub:String ,
-  // name: String,
-  given_name: String,
-  family_name: String,
-  picture: String,
-  email: String,
-  email_verified: Boolean,
-  locale: String,
+  credits: { type: Number, default: 0 },
+  sub:String
+
 });
 
 mongoose.model('users', userSchema); 
-//by using mongoose.model command, we are telling mongoose that we want to create a new collection by the name of 'user'
+//by using mongoose.model command, we are telling mongoose that we want to create a new collection by the name of 'users'
 

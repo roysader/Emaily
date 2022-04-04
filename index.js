@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session')
 const passport = require('passport');
 //const { mongoURI } = require('./config/keys');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
@@ -11,8 +12,9 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+app.use(bodyParser.json());
 app.use(cookieSession({
-  maxAge: 30 * 24 *60 * 60 *1000,
+  maxAge: 30 * 24 * 60 * 60 * 1000,
   keys: [keys.cookieKey]
   })
 );
@@ -21,10 +23,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 // instead of 
 //require('./routes/authRoutes')
 //authRoutes(app)
 
+if (process.env.NODE_ENV === 'production'){  //if any git request comes in for some route or file and we do not understand what its looking for,
+  //then look in client/build directory and see if the file is there
+
+
+  //express will first check to see if there is a specific file its looking for, if there is...
+  app.use(express.static('client/build'));
+
+  //if there is not...and give them back the html file.
+  const path= require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
 
 const PORT =  5000;
 app.listen(PORT);

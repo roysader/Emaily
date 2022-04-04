@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter,Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -10,11 +10,17 @@ const SurveyNew = <h2>SurveyNew</h2>;
 
 
 class App extends Component{
-
+// life cycle of react
   componentDidMount(){
     this.props.fetchUser();
+  }
 
+  componentDidUpdate() {
+    console.log('let me know that it updated')
+  }
 
+  componentWillUnmount() {
+    console.log('')
   }
 
   render(){
