@@ -5,7 +5,7 @@
   "main": "index.js",
   "engines": {
     "node": "17.8.0",
-    "npm": "8.5.0"
+    "npm": "8.5.5"
   },
   "scripts": {
     "start": "node index.js",
@@ -27,7 +27,7 @@
     "mongoose": "^6.2.7",
     "node": "^17.5.0",
     "nodemon": "^2.0.15",
-    "nvm": "^0.0.4",
+    "nvm": "^0.39.1",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
     "stripe": "^8.214.0"
