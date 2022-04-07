@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
+const {Schema} = mongoose; 
 //const Schema = mongoose.Schema; 
-const {Schema} = mongoose; //same as above
+//same as above
 //mongoose object has a property called "schema", take that prop and asign to new property called "schema"
 
 
 const userSchema = new Schema({
   googleId: String,
   credits: { type: Number, default: 0 },
-  sub:String
-
 });
 
 mongoose.model('users', userSchema); 

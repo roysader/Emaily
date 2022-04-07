@@ -2,6 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
+
 const User = mongoose.model('users');
 
 passport.serializeUser((user, done) => {//encodes userId inside Cookies  //take a user model and generate a token that will be stuffed in the cookie
@@ -27,9 +28,7 @@ passport.use
       callbackURL: '/auth/google/callback',
       proxy: true
     }, 
-
-    async (accessToken, refreshToken, profile, done) => //user has already been granted permission, goes to the server instead of passing to google.//callback function
-    {
+    async (accessToken, refreshToken, profile, done) => {//user has already been granted permission, goes to the server instead of passing to google.//callback function
      const existingUser = await User.findOne({googleId: profile.id}) //will initiate the query //findOne returns a promise, since async
       {
           if(existingUser){
@@ -42,7 +41,6 @@ passport.use
 
               //call back function(2nd argument)
               //take identifying user info and save it to dabatabase, if we want to
-          
         }
       }
     )

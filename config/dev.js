@@ -6,5 +6,6 @@ module.exports = {
   mongoURI: 'mongodb+srv://roy:BnHmtCJSHrUxsiO1@emaily-dev.x4goz.mongodb.net/emaily-dev?retryWrites=true&w=majority', //dev
   cookieKey: 'oiasjdaoisdh',
   stripePublishableKey: 'pk_test_51Kjiv1E08WkkLeaWmWegLVhVP3FBFvVUQLiApOJj28G7awBraJ9zaEKrsKjYrZzWnEOL8YPsyFuSmeUviL9nv0Vh00zCUe1vkh',
-  stripeSecretKey: 'sk_test_51Kjiv1E08WkkLeaWqfPsDFVye04z1Ny4050tIE0VWSIWQbNsg14E89VJdXhMkDvHjN8d2ks4FT7CoDyQh7Umd7Cq00ggQd7bnh'
+  stripeSecretKey: 'sk_test_51Kjiv1E08WkkLeaWqfPsDFVye04z1Ny4050tIE0VWSIWQbNsg14E89VJdXhMkDvHjN8d2ks4FT7CoDyQh7Umd7Cq00ggQd7bnh',
+  sendGridKey: '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'
 };

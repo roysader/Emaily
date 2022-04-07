@@ -6,13 +6,17 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User');
+require('./models/Survey');
+
 require('./services/passport');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
 app.use(bodyParser.json());
+
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
   keys: [keys.cookieKey]
@@ -22,15 +26,17 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//route handlers
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app); 
+//requiring (app) to be the route function and then call that route function with the app function.
 // instead of 
 //require('./routes/authRoutes')
 //authRoutes(app)
 
 if (process.env.NODE_ENV === 'production'){  //if any git request comes in for some route or file and we do not understand what its looking for,
   //then look in client/build directory and see if the file is there
-
 
   //express will first check to see if there is a specific file its looking for, if there is...
   app.use(express.static('client/build'));
@@ -45,13 +51,13 @@ if (process.env.NODE_ENV === 'production'){  //if any git request comes in for s
   //if there is not...and give them back the html file.
   const path= require('path');
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
 }
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
-console.log('server is running') 
+console.log('server is running')
  
 
 
@@ -66,6 +72,10 @@ console.log('server is running')
 //model instances: are javascript objects that representing a single record in the collection
 //model class related to one collection and instances each represents one record(inside the collection)
 //password: BLQqVexFxwqY9W0h
+
+
+//sendgrid key: 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
+//API Key ID: TLBWx0SMTQSS-T-I9QKj_w
 
 //Google
 //emaily-prod 
