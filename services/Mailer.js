@@ -5,21 +5,20 @@ const sendgrid = require('sendgrid');
 const helper = sendgrid.mail;
 const keys = require('../config/keys');
 
-class Mailer extends helper.Mail 
-{
-  constructor({ subject, recipients }, content ){ //"content" is the html srting that we got from our surveyTemplate(survey) from surveyRoutes.js
+class Mailer extends helper.Mail {
+  constructor({ subject, recipients }, content) { //"content" is the html srting that we got from our surveyTemplate(survey) from surveyRoutes.js
     super();
 
      this.sgApi = sendgrid(keys.sendGridKey);
-     this.from_email = new helper.Email('no-reply@emaily.com');
+     this.from_email = new helper.Email('masadirinc@gmail.com');
      this.subject = subject;
      this.body = new helper.Content('text/html', content);
      this.recipients = this.formatAddresses(recipients); //helper function
   
-      this.addContent(this.body);
-      this.addClickTracking();
-      this.addRecipients(); 
-    }
+    this.addContent(this.body);
+    this.addClickTracking();
+    this.addRecipients();
+  }
 
   formatAddresses(recipients) {
     return recipients.map(({ email }) => {
@@ -51,9 +50,9 @@ class Mailer extends helper.Mail
       body: this.toJSON()
     });
 
-    const response = this.sgApi.API(request);
+    const response = await this.sgApi.API(request);
     return response;
   }
 }
 
-module.exports = Mailer;  
+module.exports = Mailer;

@@ -45,3 +45,7 @@ passport.use
       }
     )
   ); 
+
+
+  // Passport is Express-compatible authentication middleware for Node.js.
+// Passport's sole purpose is to authenticate requests
