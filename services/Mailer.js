@@ -10,7 +10,7 @@ class Mailer extends helper.Mail {
     super();
 
      this.sgApi = sendgrid(keys.sendGridKey);
-     this.from_email = new helper.Email('masadirinc@gmail.com');
+     this.from_email = new helper.Email('royisader@gmail.com');
      this.subject = subject;
      this.body = new helper.Content('text/html', content);
      this.recipients = this.formatAddresses(recipients); //helper function

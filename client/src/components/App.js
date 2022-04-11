@@ -1,3 +1,8 @@
+// this is where we set up all of our different routing logic for our application 
+// and make sure that different components are visible on the screen.
+
+
+// eslint-disable-next-line
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -5,8 +10,8 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Dashboard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 
 
 class App extends Component{
@@ -31,8 +36,8 @@ class App extends Component{
           <Header/>
           <Routes>
             <Route exact path="/" element={<Landing />} />
-            <Route exact path="/surveys" element = { Dashboard } />
-            <Route path="/surveys/new" element = { SurveyNew } />
+            <Route exact path="/surveys" element = { <Dashboard/> } />
+            <Route path="/surveys/new" element = { <SurveyNew /> } />
             {/* <Route path="/header" element = {<Header />} /> */}
             { <Route exact path="*" element = {<h2>404 NOT FOUND!</h2>} /> }
           </Routes>
