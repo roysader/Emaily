@@ -16,9 +16,10 @@ class SurveyNew extends Component {
       );
     }
 
+      //shows SurveyForm on False
     return (
       <SurveyForm
-        onSurveySubmit={() => this.setState({ showFormReview: true })}
+        onSurveySubmit={() => this.setState({ showFormReview: true })} 
       />
     );
   }
@@ -35,4 +36,4 @@ class SurveyNew extends Component {
 //
 export default reduxForm ({
   form: 'surveyForm'
- }) (SurveyNew); //end of SurveyForm //if this component (surveyNew) gets unmounted, dump all values inside//if canceled is pressed, delete all values
+ }) (SurveyNew); //end of SurveyForm //if this component (surveyNew) gets unmounted, dump all values inside//if cancelled is pressed, delete all values

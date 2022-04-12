@@ -8,33 +8,36 @@ import { Link } from 'react-router-dom';
 import SurveyField from './SurveyField';     
 import validateEmails from '../../utils/validateEmails';               
 import formFields from './formFields';
-
+ 
 class SurveyForm extends Component {
+  //to show label and text input
   renderFields(){ //renderFields is a helper
    return _.map(formFields, ({ label, name }) => {
     return(
-          <Field
-          key={name}
-          component={SurveyField}
-          type="text"
+          <Field 
+          key={name} //we have to make sure we have a key property for react to identify the field components
+          component={SurveyField} //rather than attempting to render text input itself, it should rely upon us to do it ourselves
+          type="text"   //telling field we're trying to enter some text
           label={label}
-          name={name}
+          name={name}   //the name we're trying to record
         />
       );
     });
   }
+  
+  //handleSubmit is fnction provided by reduxForm helper at the buttom, 
   render() {
     return (
-      <div>   
-         <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
-        {this.renderFields()}
-        <Link to="/surveys" className='red btn-flat white-text'>
-        Cancel
-        </Link>
-          <button type="submit" className='teal btn-flat right white-text'>
-            Next
-            <i className="material-icons right">done</i> 
-          </button>
+      <div>    
+        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
+          {this.renderFields()}
+            <Link to="/surveys" className='red btn-flat white-text'>
+            Cancel
+            </Link>
+            <button type="submit" className='teal btn-flat right white-text'>
+              Next
+              <i className="material-icons right">done</i> 
+            </button>
         </form>
       </div>
     );
@@ -44,7 +47,7 @@ class SurveyForm extends Component {
 function validate(values){ //values is an object that contains all the values coming off of our form. values has the name & values of the field. values object has body, emails, subject and title.
   const errors = {};
 
- errors.recipients = validateEmails(values.recipients || '');
+ errors.recipients = validateEmails(values.recipients || ''); //take the values.recipients (emails) and validate
   
  _.each(formFields, ({ name }) => {
     if (!values[name]) {

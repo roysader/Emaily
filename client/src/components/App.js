@@ -28,9 +28,11 @@ class App extends Component{
     console.log('')
   }
 
+
+  //"container" adds padding to the sides
   render(){
   return (
-    <div className="container">
+    <div className="container"> 
       <BrowserRouter>
         <div>
           <Header/>
