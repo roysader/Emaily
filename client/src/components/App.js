@@ -4,7 +4,7 @@
 
 // eslint-disable-next-line
 import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter,  Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -20,34 +20,31 @@ class App extends Component{
     this.props.fetchUser();
   }
 
-  componentDidUpdate() {
-    console.log('let me know that it updated')
-  }
+  // componentDidUpdate() {
+  //   console.log('let me know that it updated')
+  // }
 
-  componentWillUnmount() {
-    console.log('')
-  }
+  // componentWillUnmount() {
+  //   console.log('')
+  // }
 
 
   //"container" adds padding to the sides
-  render(){
-  return (
-    <div className="container"> 
-      <BrowserRouter>
-        <div>
-          <Header/>
-          <Routes>
-            <Route exact path="/" element={<Landing />} />
-            <Route exact path="/surveys" element = { <Dashboard/> } />
-            <Route path="/surveys/new" element = { <SurveyNew /> } />
-            {/* <Route path="/header" element = {<Header />} /> */}
-            { <Route exact path="*" element = {<h2>404 NOT FOUND!</h2>} /> }
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
+  render() {
+    return (
+      <div className="container">
+        <BrowserRouter>
+          <div>
+            <Header />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew} />
+          </div>
+        </BrowserRouter>
+      </div>
     );
   }
 }
+
 
 export default connect(null, actions)(App);

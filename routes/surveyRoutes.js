@@ -30,13 +30,13 @@ module.exports = (app) => {
     const mailer = new Mailer(survey, surveyTemplate(survey));
   
     try{
-        await mailer.send();
-        await survey.save(); //save sruvey to database
-        req.user.credits -= 1; //deduce 1 credit from user
-        const user = await req.user.save();
-        res.send(user);
-      } catch (err) 
-        {
+          await mailer.send();
+          await survey.save(); //save sruvey to database
+          req.user.credits -= 1; //deduce 1 credit from user
+          const user = await req.user.save();
+
+          res.send(user);
+        }catch (err) {
           res.status(422).send(err);
         }
   });

@@ -34,6 +34,11 @@ class SurveyNew extends Component {
 }
 
 //
-export default reduxForm ({
+export default reduxForm({
   form: 'surveyForm'
  }) (SurveyNew); //end of SurveyForm //if this component (surveyNew) gets unmounted, dump all values inside//if cancelled is pressed, delete all values
+
+
+// export default reduxForm({
+//   form: 'surveyForm'
+// })(SurveyNew);

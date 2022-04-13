@@ -15,9 +15,9 @@ export const handleToken = token => async dispatch => {
 //export const submitSurvey = (values, navigate) => async (dispatch) => {  
 //this is a post request and then redirect to '/surveys'
 
-export const submitSurvey = (values) => async dispatch => {  
+export const submitSurvey = (values, history) => async dispatch => {  
   const res = await axios.post('/api/surveys', values);   //value; data we want to send to the back end, so we pass along the value object
- // navigate('/surveys');   
+  history.push('/surveys');   
   dispatch({ type: FETCH_USER, payload: res.data });
 
   //we're gonna take the "res" (response) and Dispatch an action of type FETCH_USER to update our local User Model

@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "17.8.0",
+    "node": "16.14.2",
     "npm": "8.6.0"
   },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js --ignore './client/'",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "webhook": "lt -p 5000 -s lairgliargli"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +22,6 @@
     "concurrently": "^7.0.0",
     "cookie-session": "^2.0.0",
     "express": "^4.17.3",
-    "font": "0.0.4",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.7",
     "node": "^16.14.2",
