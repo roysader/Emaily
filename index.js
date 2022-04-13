@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production'){  //if any git request comes in for s
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
-console.log('server is running')
+console.log('server is running!')
  
 
 

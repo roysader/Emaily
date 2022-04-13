@@ -5,11 +5,11 @@ const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 const Survey = mongoose.model('surveys');
-
+ 
 module.exports = (app) => {
-
-  app.get('/api/surveys/thanks', (req, res)=> {
-    res.send('Thanks for voting!')
+ 
+  app.get('/api/surveys/thanks', (req, res) => {
+    res.send('Thanks for voting!');
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
