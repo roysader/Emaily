@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER } from './types';
+import { FETCH_USER ,FETCH_SURVEYS} from './types';
 
 export const fetchUser = () => async dispatch => {//its a Functional Component  //When the Action Creater is called,
   const res = await axios.get('/api/current_user');   //it will return a function. redux-thunk will see that we returned a fnct and will call it with the Dispatch
@@ -23,5 +23,8 @@ export const submitSurvey = (values, history) => async dispatch => {
   //we're gonna take the "res" (response) and Dispatch an action of type FETCH_USER to update our local User Model
 };
 
+export const fetchSurveys = () => async dispatch => {
+  const res = await axios.get('/api/surveys');
 
-
+  dispatch({ type: FETCH_SURVEYS, payload: res.data }); //payload would be an array that contians all the different surveys that the user has made
+};
