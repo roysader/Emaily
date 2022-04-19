@@ -1,3 +1,4 @@
+const { ServerType } = require('mongodb');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 //const Schema = mongoose.Schema; 
@@ -12,4 +13,3 @@ const userSchema = new Schema({
 
 mongoose.model('users', userSchema);
 //by using mongoose.model command, we are telling mongoose that we want to create a new collection by the name of 'users'
-

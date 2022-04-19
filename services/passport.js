@@ -20,6 +20,8 @@ passport.deserializeUser((id,done)=>{ //encodes userId inside Cookies  //take th
 
 passport.use
 (
+
+  //defining call back function
   new GoogleStrategy
   (
     {

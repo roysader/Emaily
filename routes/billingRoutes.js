@@ -3,7 +3,7 @@ const stripe = require('stripe')(keys.stripeSecretKey);
 const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = app => {
-  app.post('/api/stripe', requireLogin, async (req, res) => {
+  app.post('/api/stripe', requireLogin, async (req, res) => { //working on our stripe API handler for making a post request with the token from the front end
     const charge = await stripe.charges.create({
       amount: 500,
       currency: 'usd',

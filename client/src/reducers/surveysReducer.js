@@ -1,3 +1,5 @@
+//records whether or not the user is logged in
+
 //surveysReducers purpose is to watch {type} in (actions/index) and return the list of surveys
 
 //when to start the array state =[] would be empty and then will be populated with all the surveys

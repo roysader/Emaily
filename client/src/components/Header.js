@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Payments from './Payments';
 
 class Header extends Component {
-  renderContent() {
+  renderContent() { //renderContent is a helper method to remove the "login button" when logged in
     switch (this.props.auth) {
       case null:
         return;

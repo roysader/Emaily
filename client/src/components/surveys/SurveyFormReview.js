@@ -3,13 +3,9 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import formFields from './formFields';
-// eslint-disable-next-line
 import * as actions from '../../actions';
 import { withRouter } from "react-router-dom";
 
-
-
-//const SurveyFormReview = ({ onCancel, formValues, submitSurvey, navigate }) => {
  const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   
   const reviewFields = _.map(formFields, ({ name, label }) => {
@@ -23,7 +19,7 @@ import { withRouter } from "react-router-dom";
     );
   });
 
-  return (
+  return (  
     
     <div>
       <h5>Please confirm your entries</h5>
@@ -34,7 +30,6 @@ import { withRouter } from "react-router-dom";
           Back
       </button>
       <button
-      //onClick={() => submitSurvey(formValues, navigate)}
         onClick={() => submitSurvey(formValues, history)} //submitSurvey is an action creator
         className="green btn-flat right white-text">
           Send Survey

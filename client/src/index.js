@@ -12,9 +12,10 @@ import reducers from './reducers';
 import axios from 'axios';
 window.axios = axios;
 
-// create a redux store
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
-
+// create a Redux Store
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk)); 
+// and hooked up to our React side of our application by placing the <Provider> tag
+// Proivder tag is a React component that knows how to read changes from our Redux Store
 ReactDOM.render(
   <Provider store={store}>
     <App />

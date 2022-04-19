@@ -12,7 +12,6 @@ export const handleToken = token => async dispatch => {
 };
   
 //action creator
-//export const submitSurvey = (values, navigate) => async (dispatch) => {  
 //this is a post request and then redirect to '/surveys'
 
 export const submitSurvey = (values, history) => async dispatch => {  
