@@ -26,4 +26,5 @@ export const fetchSurveys = () => async dispatch => {
   const res = await axios.get('/api/surveys');
 
   dispatch({ type: FETCH_SURVEYS, payload: res.data }); //payload would be an array that contians all the different surveys that the user has made
+  // we dispatch an action to store the response in redux, which is the global state of the application ch
 };

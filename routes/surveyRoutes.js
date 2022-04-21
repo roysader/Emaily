@@ -13,8 +13,7 @@ module.exports = (app) => {
 
   app.get('/api/surveys', requireLogin, async (req, res) => {
     const surveys = await Survey.find({_user: req.user.id})
-    .select({recipients: false
-    });
+    .select({recipients: false});
     res.send(surveys);
   });
 
@@ -63,7 +62,7 @@ app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
       recipients: recipients
         .split(',')
         .map((email) => ({ email: email.trim() })),
-      _user: req.user.id, //id from mongoose
+      _user: req.user.id, //id from mongoose || when we have an underscore it means that this is a reference to the logged in user
       dateSent: Date.now(),
     });
      // Great place to send an email!
